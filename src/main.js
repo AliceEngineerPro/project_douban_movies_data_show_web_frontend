@@ -1,14 +1,14 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
-import './assets/css/global.css'
+// ElementPlus(全局)
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+// 全局样式
+import '@/static/css/global.css'
 
-const vue = createApp(App)
+const app = createApp(App)
 
-vue.use(store)
-vue.use(router)
-vue.use(ElementPlus)
-vue.mount('#app')
+app.use(router)
+app.use(ElementPlus)
+app.mount('#app')
