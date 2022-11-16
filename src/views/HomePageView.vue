@@ -22,6 +22,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import url('@/static/css/HomePage/sb-admin-2.css');
+@import '@/static/css/HomePage/sb-admin-2.css';
 
 </style>
