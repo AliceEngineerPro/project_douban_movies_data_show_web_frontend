@@ -39,7 +39,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">电影数据个数</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ amount }} 个</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ indexCardsData.amount }} 个</div>
                     </div>
                   </div>
                 </div>
@@ -51,7 +51,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">豆瓣最高评分</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ scoreMax }} 分</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ indexCardsData.scoreMax }} 分 </div>
                     </div>
                   </div>
                 </div>
@@ -63,7 +63,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">作品最多演员</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ actorMax }}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ indexCardsData.actorMax }}</div>
                     </div>
                   </div>
                 </div>
@@ -75,7 +75,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">制片最多国家</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ movieCountryMax }}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ indexCardsData.movieCountryMax }}</div>
                     </div>
                   </div>
                 </div>
@@ -87,7 +87,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">电影类型总数</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ movieTypeAmount }} 个</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ indexCardsData.movieTypeAmount }} 个</div>
                     </div>
                   </div>
                 </div>
@@ -99,7 +99,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">电影最多语言</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ movieLangMax }}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ indexCardsData.movieLangMax }}</div>
                     </div>
                   </div>
                 </div>
@@ -118,13 +118,23 @@
 
 export default {
   name: 'HomePage',
-  props: {
-    amount: '正在加载...',
-    scoreMax: '正在加载...',
-    actorMax: '正在加载...',
-    movieCountryMax: '正在加载...',
-    movieTypeAmount: '正在加载...',
-    movieLangMax: '正在加载...',
+  data() {
+    return {
+      indexCardsData: [],
+    }
+  },
+  created() {
+    this.getIndexCardsData();
+  },
+  methods: {
+    async getIndexCardsData() {
+      const {data: data} = await this.$axios.get('/home/preview/part1');
+      if (data.code !== 200) {
+        return data.msg;
+      } else {
+        this.indexCardsData = data.data;
+      }
+    }
   }
 }
 
