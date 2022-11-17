@@ -5,7 +5,7 @@
 @CreatedTime: 2022/11/17 2:53
 -->
 <template>
-  <div id="main"></div>
+  <div id="moviesTypesPie"></div>
 </template>
 
 <script>
@@ -30,9 +30,14 @@ echarts.use([
 
 export default {
   name: "DrawMoviesTypesPie",
+  data() {
+    return {
+      s: []
+    }
+  },
   methods: {
     drawEchartsPie(data) {
-      const chartDom = document.getElementById('main');
+      const chartDom = document.getElementById('moviesTypesPie');
       const myChart = echarts.init(chartDom);
       let option;
 
@@ -67,25 +72,25 @@ export default {
 
       option && myChart.setOption(option);
     },
-    async getIndexEchartsData() {
-      const {data: data} = await this.$axios.get('/getIndexEchartsData');
-      if (data.code !== 200) {
-        return data.msg;
+    async getMoviesTypeData() {
+      const {data: response} = await this.$axios.get('/echarts_info_movies_type');
+      if (response.code !== 200) {
+        return response.msg;
       } else {
-        let dataMovieType = data.data.MovieTypeEcharts;
+        let dataMovieType = response.data[0].moviesType;
         this.drawEchartsPie(dataMovieType)
       }
     }
   },
   created() {
-    this.getIndexEchartsData();
+    this.getMoviesTypeData();
   },
 }
 </script>
 
 <style scoped lang="less" type="text/css">
 
-#main {
+#moviesTypesPie {
   width: 600px;
   height: 600px;
 }

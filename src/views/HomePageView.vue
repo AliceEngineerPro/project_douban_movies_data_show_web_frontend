@@ -5,11 +5,11 @@
 @CreatedTime: 2022/11/16 0:58
 -->
 <template>
-  <HomePage></HomePage>
+    <HomePage></HomePage>
 </template>
 
 <script>
-import HomePage from '@/components/HomePage'
+import HomePage from '@/components/page/HomePage/HomePage'
 
 export default {
   name: 'HomePageView',
@@ -21,7 +21,6 @@ export default {
 
 </script>
 
-<style scoped lang="less">
-//@import '@/static/css/HomePage/sb-admin-2.css';
+<style scoped lang="less" type="text/css">
 
 </style>
