@@ -4,8 +4,9 @@
 @HomePage: https://github.com/AliceEngineerPro
 @CreatedTime: 2022/11/16 0:57
 -->
+
 <template>
-  <el-container class="home_page_center">
+  <el-container class="homepage">
     <el-header>
       <div>
         <img src="@/static/images/logo64.svg" alt="logo">
@@ -51,7 +52,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">豆瓣最高评分</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ indexCardsData.scoreMax }} 分 </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ indexCardsData.scoreMax }} 分</div>
                     </div>
                   </div>
                 </div>
@@ -106,6 +107,13 @@
               </div>
             </div>
           </div>
+          <div>
+            <DrawMoviesTypesPie></DrawMoviesTypesPie>
+          </div>
+          <div>
+<!--            <DrawMoviesScoreLine></DrawMoviesScoreLine>-->
+          </div>
+          <div>{{ indexEchartsData }}</div>
 
         </el-main>
         <el-footer>Footer</el-footer>
@@ -115,16 +123,24 @@
 </template>
 
 <script>
+import DrawMoviesTypesPie from '@/components/echarts/MoviesTypePie/DrawMoviesTypesPie'
+import DrawMoviesScoreLine from "@/components/echarts/MoviesScoreLine/DrawMoviesScoreLine";
 
 export default {
   name: 'HomePage',
+  components: {
+    DrawMoviesTypesPie,
+    DrawMoviesScoreLine,
+  },
   data() {
     return {
-      indexCardsData: [],
+      indexCardsData: {},
+      indexEchartsData: {},
     }
   },
   created() {
     this.getIndexCardsData();
+    this.getIndexEchartsData();
   },
   methods: {
     async getIndexCardsData() {
@@ -134,15 +150,23 @@ export default {
       } else {
         this.indexCardsData = data.data;
       }
+    },
+    async getIndexEchartsData() {
+      const {data: data} = await this.$axios.get('/getIndexEchartsData');
+      if (data.code !== 200) {
+        return data.msg;
+      } else {
+        this.indexEchartsData = data.data;
+      }
     }
   }
 }
 
 </script>
 
-<style scoped lang="less">
+<style scoped lang="less" type="text/css">
 
-.home_page_center {
+.homepage {
   height: 100%;
 }
 

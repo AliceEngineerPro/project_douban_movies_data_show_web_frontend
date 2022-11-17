@@ -14,7 +14,7 @@ import HomePage from '@/components/HomePage'
 export default {
   name: 'HomePageView',
   components: {
-    HomePage
+    HomePage,
   }
 
 }
@@ -22,6 +22,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import '@/static/css/HomePage/sb-admin-2.css';
+//@import '@/static/css/HomePage/sb-admin-2.css';
 
 </style>
