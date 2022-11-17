@@ -5,7 +5,9 @@
 @CreatedTime: 2022/11/17 2:53
 -->
 <template>
-  <div id="moviesTypesPie"></div>
+  <el-card class="box-card">
+    <div id="moviesTypesPie"></div>
+  </el-card>
 </template>
 
 <script>
@@ -91,8 +93,15 @@ export default {
 <style scoped lang="less" type="text/css">
 
 #moviesTypesPie {
-  width: 600px;
+  width: 785px;
   height: 600px;
+}
+
+.box-card {
+  width: 785px;
+  height: 600px;
+  display: inline-block;
+  margin-right: 15px;
 }
 
 </style>

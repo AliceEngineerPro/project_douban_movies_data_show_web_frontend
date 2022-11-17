@@ -15,12 +15,14 @@
     <el-container>
       <el-aside width="200px">
         <el-menu background-color="#343444" text-color="#ffffff" active-text-color="#ffd04b">
-          <el-menu-item index="1">
-            <el-icon>
-              <img src="@/static/images/home16_white.svg" alt="home">
-            </el-icon>
-            <template #title>首页</template>
-          </el-menu-item>
+          <a href="/home">
+            <el-menu-item index="1">
+              <el-icon>
+                <img src="@/static/images/home16_white.svg" alt="home">
+              </el-icon>
+              <template #title>首页</template>
+            </el-menu-item>
+          </a>
           <el-menu-item index="2">
             <el-icon>
               <img src="@/static/images/search16_white.svg" alt="search">
@@ -32,14 +34,14 @@
       <el-container>
         <el-main>
 
-            <IndexCard></IndexCard>
+          <IndexCard></IndexCard>
+          <div class="echarts_data">
             <DrawMoviesTypesPie></DrawMoviesTypesPie>
             <DrawMoviesScoreLine></DrawMoviesScoreLine>
-
-          <div>123</div>
+          </div>
 
         </el-main>
-        <el-footer>Footer</el-footer>
+        <el-footer></el-footer>
       </el-container>
     </el-container>
   </el-container>
@@ -95,6 +97,12 @@ export default {
 
 .el-footer {
   background: #EAEDF1;
+}
+
+.echarts_data {
+
+  //display: inline-block;
+  margin: 0 15px;
 }
 
 </style>

@@ -164,14 +164,16 @@ export default {
 }
 
 .text {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .item {
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
 
 .box-card {
-  width: 480px;
+  width: 240px;
+  display: inline-block;
+  margin: 0 15px 15px;
 }
 </style>

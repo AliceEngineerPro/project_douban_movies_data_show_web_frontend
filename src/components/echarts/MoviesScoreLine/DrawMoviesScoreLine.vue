@@ -5,7 +5,10 @@
 @CreatedTime: 2022/11/17 4:56
 -->
 <template>
-  <div id="moviesScoreLine"></div>
+  <el-card class="box-card">
+    <div id="moviesScoreLine"></div>
+  </el-card>
+
 </template>
 
 <script>
@@ -26,6 +29,10 @@ export default {
       let option;
 
       option = {
+        title: {
+          text: '电影评分统计',
+          left: 'center'
+        },
         xAxis: {
           type: 'category',
           boundaryGap: false,
@@ -62,11 +69,18 @@ export default {
 }
 </script>
 
-<style scoped type="text/css">
+<style scoped lang="less" type="text/css">
 
 #moviesScoreLine {
-  width: 600px;
+  width: 785px;
   height: 600px;
+}
+
+.box-card {
+  width: 785px;
+  height: 600px;
+  display: inline-block;
+  margin-left: 15px;
 }
 
 </style>
