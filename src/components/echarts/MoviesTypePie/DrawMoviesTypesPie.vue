@@ -32,11 +32,6 @@ echarts.use([
 
 export default {
   name: "DrawMoviesTypesPie",
-  data() {
-    return {
-      s: []
-    }
-  },
   methods: {
     drawEchartsPie(data) {
       const chartDom = document.getElementById('moviesTypesPie');
@@ -94,12 +89,12 @@ export default {
 
 #moviesTypesPie {
   width: 785px;
-  height: 600px;
+  height: 700px;
 }
 
 .box-card {
   width: 785px;
-  height: 600px;
+  height: 700px;
   display: inline-block;
   margin-right: 15px;
 }

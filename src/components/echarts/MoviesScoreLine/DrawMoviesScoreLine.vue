@@ -73,12 +73,12 @@ export default {
 
 #moviesScoreLine {
   width: 785px;
-  height: 600px;
+  height: 700px;
 }
 
 .box-card {
   width: 785px;
-  height: 600px;
+  height: 700px;
   display: inline-block;
   margin-left: 15px;
 }

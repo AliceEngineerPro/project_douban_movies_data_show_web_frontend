@@ -59,19 +59,6 @@
     <div class="text item">{{ baseInfoLanguagesMax }}</div>
   </el-card>
 
-
-<!--  <div>电影数据个数</div>-->
-<!--  <div>{{ baseInfoAmount }}</div>-->
-<!--  <div>豆瓣最高评分</div>-->
-<!--  <div>{{ baseInfoScoreMax }}</div>-->
-<!--  <div>作品最多演员</div>-->
-<!--  <div>{{ baseInfoActorMax }}</div>-->
-<!--  <div>制片最多国家</div>-->
-<!--  <div>{{ baseInfoCountryMax }}</div>-->
-<!--  <div>电影类型总数</div>-->
-<!--  <div>{{ baseInfoTypeAmount }}</div>-->
-<!--  <div>电影最多语言</div>-->
-<!--  <div>{{ baseInfoLanguagesMax }}</div>-->
 </template>
 
 <script>
@@ -104,7 +91,7 @@ export default {
   },
   methods: {
     async getBaseInfoAmount() {
-      const {data: response} = await this.$axios.get('base_info_amount');
+      const {data: response} = await this.$axios.get('/base_info_amount?start=1&end=600');
       if (response.code !== 200) {
         return response.msg;
       } else {
